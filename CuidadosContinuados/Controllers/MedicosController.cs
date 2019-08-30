@@ -65,6 +65,9 @@ namespace CuidadosContinuados.Controllers
 
         public ActionResult LogOut()
         {
+            var token = db.tokens.ToList().Where(c => c.Token == Session["role"].ToString()).SingleOrDefault();
+            db.tokens.Remove(token);
+
             Session["role"] = null;
             return RedirectToAction("Login", "Home");
         }
