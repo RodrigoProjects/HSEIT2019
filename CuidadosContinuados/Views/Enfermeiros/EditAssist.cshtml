@@ -1,0 +1,53 @@
+﻿@model CuidadosContinuados.Models.Referenciacao
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Preencher</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cuidador, htmlAttributes: new { @class = "control-label col-md-5 h4" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Cuidador, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Cuidador, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Cuidador.Nascimento, "", new { @class = "text-danger" })
+        </div>
+    </div>  
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CuidadorDetalhes, htmlAttributes: new { @class = "control-label col-md-5 h4" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CuidadorDetalhes, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CuidadorDetalhes, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IRS, htmlAttributes: new { @class = "control-label col-md-5 h4" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.IRS, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.IRS, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <hr />
+
+    <button class="btn btn-outline-success">Guardar</button>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-outline-info" })
+</div>

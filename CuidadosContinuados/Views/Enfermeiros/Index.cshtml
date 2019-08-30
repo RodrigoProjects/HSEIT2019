@@ -1,0 +1,198 @@
+﻿@model CuidadosContinuados.Models.MedicosViewPage
+
+@{
+    ViewBag.Title = "Index";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<link href="~/Static/Buttons.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col">
+        <h2 style="text-align:center;">
+            Referenciações
+            <a class="btn btn-success" href="~/Enfermeiros/Create"><i class="fas fa-plus"></i></a>
+        </h2>
+    </div>
+    <div class="col align float-right">
+        <a class="btn btn-outline-dark float-right" href="~/Medicos/LogOut">Sair <i class="fas fa-sign-out-alt"></i></a>
+
+    </div>
+
+</div>
+
+<br />
+<br />
+@using (Html.BeginForm("Index", "Enfermeiros", FormMethod.Get))
+{
+    <div class="form-row col-md-4">
+
+
+        <div class="col-auto">
+            @Html.TextBox("searchString", null, new { @class = "search-query form-control form-inline", @placeholder = "Search" })
+
+        </div>
+        <div class="col-auto" style="margin-left:-0.6rem">
+            <button type="submit" value="" class="btn btn-danger"><i class="fas fa-search"></i></button>
+        </div>
+
+
+
+    </div>
+}
+<br />
+<br />
+<h4 class="text-danger">Por Preencher <span class="badge badge-danger">@Model.refeNot.Count()</span></h4>
+<hr class="border-danger" />
+<div class="row">
+    @foreach (var item in Model.refeNot)
+    {
+        
+    <div class="card m-2 border-danger zoomm" style="width: 22rem;">
+        <div class="card-header bg-danger font-weight-bold text-light">@Model.utentes.Where(c => c.Id == item.UtenteId).SingleOrDefault().Name</div>
+        <div class="card-body">
+            <h4>
+                Médico @if (item.MedicoOk)
+                {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                else
+                { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                <p class="text-muted" style="font-size:1.1rem;">
+                    @{var tes = Model.meds.Where(c => c.Id == item.Medico).FirstOrDefault();
+                        if (tes != null)
+                        {
+                            @tes.Name;
+                        }
+
+                    }
+                </p>
+            </h4>
+            <h4>
+                Enfermeiro  @if (item.EnfermeiroOk)
+                {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                else
+                { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                <p class="text-muted" style="font-size:1.2rem;">
+                    @{var teste = Model.enfe.Where(c => c.Id == item.Enfermeiro).FirstOrDefault();
+                        if (teste != null)
+                        {
+                            @teste.Name;
+                        }
+
+                    }
+                </p>
+            </h4>
+            <h4>
+                Assistente Social @if (item.AssistOk)
+                {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                else
+                { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+            </h4>
+            <br />
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Preencher
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="@Url.Action("EditMed", "Enfermeiros", new { Id = item.Id })">Médico</a>
+                    <a class="dropdown-item" href="@Url.Action("Edit", "Enfermeiros", new { Id = item.Id })">Enfermeiros</a>
+                    <a class="dropdown-item" href="@Url.Action("EditAssist", "Enfermeiros", new { Id = item.Id })">Assistente Social</a>
+                </div>
+            </div>
+            <button type="button" class="btn btn-outline-info" onclick="location.href='@Url.Action("Details", "Enfermeiros", new { Id = item.Id })'">Detalhes</button>
+
+
+        </div>
+    </div>
+
+
+        
+        
+
+}
+</div>
+<h4 class="text-success mt-4">Preenchido <span class="badge badge-success">@Model.refeDone.Count()</span></h4>
+<hr class="border-success mb-4" />
+<div class="row">
+
+    @foreach (var item in Model.refeDone)
+    {
+        
+            <div class="card m-2 border-success zoomm" style="width: 22rem;">
+                <div class="card-header bg-success font-weight-bold text-light">@Model.utentes.Where(c => c.Id == item.UtenteId).SingleOrDefault().Name</div>
+                <div class="card-body">
+                    <h4>
+                        Médico @if (item.MedicoOk)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                        <p class="text-muted" style="font-size:1.1rem;">
+                            @{var tes = Model.meds.Where(c => c.Id == item.Medico).FirstOrDefault();
+                                if (tes != null)
+                                {
+                                    @tes.Name;
+                                }
+
+                            }
+                        </p>
+                    </h4>
+                    <h4>
+                        Enfermeiro  @if (item.EnfermeiroOk)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                        <p class="text-muted" style="font-size:1.2rem;">
+                            @{var teste = Model.enfe.Where(c => c.Id == item.Enfermeiro).FirstOrDefault();
+                                if (teste != null)
+                                {
+                                    @teste.Name;
+                                }
+
+                            }
+                        </p>
+                    </h4>
+                    <h4>
+                        Assistente Social @if (item.AssistOk)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </h4>
+                    <br />
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Editar
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="@Url.Action("EditMed", "Enfermeiros", new { Id = item.Id })">Médico</a>
+                            <a class="dropdown-item" href="@Url.Action("Edit", "Enfermeiros", new { Id = item.Id })">Enfermeiro</a>
+                            <a class="dropdown-item" href="@Url.Action("EditAssist", "Enfermeiros", new { Id = item.Id })">Assistente Social</a>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-info" onclick="location.href='@Url.Action("Details", "Enfermeiros", new { Id = item.Id })'">Detalhes</button>
+                    @if (item.AssistOk && item.MedicoOk && item.EnfermeiroOk)
+                    {
+                        <a href="@Url.Action("ImprimePDF", "Enfermeiros", new { Id = item.Id })" target="_blank" class="btn btn-outline-dark">PDF</a>
+                    }
+                    else
+                    {
+                        <button class="btn btn-outline-dark" disabled>PDF</button>
+                    }
+
+                </div>
+            </div>
+
+
+        
+
+
+    }
+
+
+
+
+
+
+
+
+</div>

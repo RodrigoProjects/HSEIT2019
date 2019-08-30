@@ -1,0 +1,449 @@
+﻿@model CuidadosContinuados.Models.DetailsModel
+
+@{
+    ViewBag.Title = "Details";
+}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<img style="width:13rem;height:9rem;" src="~/Static/Consultas-HOSPITAL-de-Santo-Espirito-de-Angra-do-Heroismo-Consulta-Externa.jpg" />
+
+<div class="container">
+    <hr />
+
+    <div class="row">
+        <div class="card border-dark mb-3  mr-5" style="width: 33rem;">
+            <div class="card-header h4 text-center" style="font-size:1.4rem;">Utente</div>
+            <div class="card-body text-dark">
+                <h5 class="card-title text-center">@Model.ut.Name</h5>
+                <hr />
+                <p class="card-text font-weight-bolder">Morada: <span class="font-weight-normal">@Model.ut.Morada</span></p>
+                <p class="card-text font-weight-bolder">Freguesia: <span class="font-weight-normal">@Model.ut.Freguesia</span></p>
+                <p class="card-text font-weight-bolder">Telefone: <span class="font-weight-normal">@Model.ut.NumeroTelefone</span></p>
+                <p class="card-text font-weight-bolder">Data de Nascimento: <span class="font-weight-normal">@String.Format("{0}/{1}/{2}", Model.ut.Nascimento.Day, Model.ut.Nascimento.Month, Model.ut.Nascimento.Year)</span></p>
+                <p class="card-text font-weight-bolder">Estado Civil: <span class="font-weight-normal">@Model.ut.EstadoCivil</span></p>
+                <p class="card-text font-weight-bolder">Escolaridade: <span class="font-weight-normal">@Model.ut.Escolaridade</span></p>
+                <p class="card-text font-weight-bolder">Benefeciário: <span class="font-weight-normal">@Model.ut.Beneficiario</span></p>
+            </div>
+        </div>
+        <div class="card border-dark mb-3" style="width: 33rem;">
+            <div class="card-header h4 text-center" style="font-size:1.4rem;">Cuidador</div>
+            <div class="card-body text-dark">
+                <h5 class="card-title text-center">@Model.refe.Cuidador.Name</h5>
+                <hr />
+                <p class="card-text font-weight-bolder">Morada: <span class="font-weight-normal">@Model.refe.Cuidador.Morada</span></p>
+                <p class="card-text font-weight-bolder">Telefone: <span class="font-weight-normal">@Model.refe.Cuidador.NumeroTelefone</span></p>
+                <p class="card-text font-weight-bolder">Data de Nascimento: <span class="font-weight-normal">@String.Format("{0}/{1}/{2}", Model.refe.Cuidador.Nascimento.Day, Model.refe.Cuidador.Nascimento.Month, Model.refe.Cuidador.Nascimento.Year)</span></p>
+                <p class="card-text font-weight-bolder">Estado Civil: <span class="font-weight-normal">@Model.refe.Cuidador.EstadoCivil</span></p>
+                <p class="card-text font-weight-bolder">Grau de Parentesco: <span class="font-weight-normal">@Model.refe.Cuidador.GrauDeParentesco</span></p>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <p class="card-text font-weight-bolder">Entidade Referenciadora: <span class="font-weight-normal">@Model.refe.EntidadeReferenciadora</span></p>
+    <p class="card-text font-weight-bolder">Diagnóstico Clínico: <span class="font-weight-normal">@Model.refe.DiagnosticoClinico</span></p>
+    <p class="card-text font-weight-bolder">Previsão de Alta: <span class="font-weight-normal">@String.Format("{0}/{1}/{2}", Model.refe.DataDeAlta.Day, Model.refe.DataDeAlta.Month, Model.refe.DataDeAlta.Year)</span></p>
+    <p class="card-text font-weight-bolder">Avaliação do Nível de Dependência (Escala de Barthel): <span class="font-weight-normal">@Model.refe.AND</span></p>
+    <p class="card-text font-weight-bolder">
+        Dependências AVD: <span class="font-weight-normal">
+            @if (Model.refe.DependenciaAVD)
+            {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+            else
+            { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+        </span>
+    </p>
+    <p class="card-text font-weight-bolder">
+        Desnutrição: <span class="font-weight-normal">
+            @if (Model.refe.Desnutricao)
+            {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+            else
+            { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+        </span>
+    </p>
+    <p class="card-text font-weight-bolder">
+        Deterioração Cognitiva: <span class="font-weight-normal">
+            @if (Model.refe.Deteorioracao)
+            {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+            else
+            { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+        </span>
+    </p>
+    <p class="card-text font-weight-bolder">
+        Problemas Sensoriais: <span class="font-weight-normal">
+            @if (Model.refe.ProblemasSensoriais)
+            {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+            else
+            { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+        </span>
+    </p>
+
+    <hr />
+    <div class="row">
+        <div class="card border-dark mb-3  mr-5" style="width: 16rem;">
+            <div class="card-header h4 text-center" style="font-size:1.4rem;">Doenças Crónicas com Episódios de Reagudização:</div>
+            <div class="card-body text-dark">
+
+                <p class="card-text font-weight-bolder">
+                    DPOC: <span class="font-weight-normal">
+                        @if (Model.refe.DCronicas.DPOC)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    ICC: <span class="font-weight-normal">
+                        @if (Model.refe.DCronicas.ICC)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Doença Cérebro Vascular: <span class="font-weight-normal">
+                        @if (Model.refe.DCronicas.DCV)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">Outras: <span class="font-weight-normal">@Model.refe.DCronicas.Outras</span></p>
+
+            </div>
+        </div>
+        <div class="card border-dark mb-3 mr-5" style="width: 25rem;">
+            <div class="card-header h4 text-center" style="font-size:1.4rem;">Necessidade de Continuidade de Cuidados no Domicílio:</div>
+            <div class="card-body text-dark">
+                <p class="card-text font-weight-bolder">
+                    Tratamento de Feridas/Úlceras por pressão: <span class="font-weight-normal">
+                        @if (Model.refe.NCCD.TratamentoDeFeridas)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Reabilitação: <span class="font-weight-normal">
+                        @if (Model.refe.NCCD.Reabilitacao)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Manutenção de Dispositivos: <span class="font-weight-normal">
+                        @if (Model.refe.NCCD.ManutencaoDeDispositivos)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Gestão do Regime Terapêutico: <span class="font-weight-normal">
+                        @if (Model.refe.NCCD.GestaoDeRegimeTerapeutico)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">Outras: <span class="font-weight-normal">@Model.refe.NCCD.Outras</span></p>
+
+            </div>
+
+        </div>
+        <div class="card border-dark mb-3 mr-5" style="width: 18rem;">
+            <div class="card-header h4 text-center" style="font-size:1.4rem;">Necessidade de Tratamentos Complexos:</div>
+            <div class="card-body text-dark">
+                <p class="card-text font-weight-bolder">
+                    Úlceras por pressão múltiplas: <span class="font-weight-normal">
+                        @if (Model.refe.NTC.UlcerasPorPressaoMultiplas)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Portadores de SNG/PEG: <span class="font-weight-normal">
+                        @if (Model.refe.NTC.PortadoresDeSNG_PEG)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Ventilação Assistida: <span class="font-weight-normal">
+                        @if (Model.refe.NTC.VentilacaoAssistida)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">Outras: <span class="font-weight-normal">@Model.refe.NTC.Outras</span></p>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="card border-dark mb-3 mr-5" style="width: 16rem;">
+            <div class="card-header h4 text-center" style="font-size:1.4rem;">Cuidados Paliativos:</div>
+            <div class="card-body text-dark">
+                <p class="card-text font-weight-bolder">
+                    Controlo de Sintomas: <span class="font-weight-normal">
+                        @if (Model.refe.CP.ControloDeSintomas)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Processo de Luto: <span class="font-weight-normal">
+                        @if (Model.refe.CP.ProcessoDeLuto)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">Outras: <span class="font-weight-normal">@Model.refe.CP.Outras</span></p>
+
+            </div>
+        </div>
+        <div class="card border-dark mb-3 mr-5" style="width: 25rem;">
+            <div class="card-header h4 text-center" style="font-size:1.4rem;">Necessidade de Ensino:</div>
+            <div class="card-body text-dark">
+                <p class="card-text font-weight-bolder">
+                    Execução de Técnicas: <span class="font-weight-normal">
+                        @if (Model.refe.NE.ExecucaoDeTecnicas)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Regime Terapêutico: <span class="font-weight-normal">
+                        @if (Model.refe.NE.RegimeTerapeutico)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Auto-cuidados: <span class="font-weight-normal">
+                        @if (Model.refe.NE.AutoCuidados)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">Outras: <span class="font-weight-normal">@Model.refe.NE.Outras</span></p>
+
+            </div>
+
+        </div>
+        <div class="card border-dark mb-3 mr-5" style="width: 18rem;">
+            <div class="card-header h4 text-center" style="font-size:1.4rem;">Estado de Consciência e de Expressão:</div>
+            <div class="card-body text-dark">
+                <p class="card-text font-weight-bolder">
+                    Confusão: <span class="font-weight-normal">
+                        @if (Model.refe.ECE.Confusao)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Desorientação: <span class="font-weight-normal">
+                        @if (Model.refe.ECE.Desorientacao)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Demência: <span class="font-weight-normal">
+                        @if (Model.refe.ECE.Demencia)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Afasia: <span class="font-weight-normal">
+                        @if (Model.refe.ECE.Afasia)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Disartria: <span class="font-weight-normal">
+                        @if (Model.refe.ECE.Disartria)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Inconsciente: <span class="font-weight-normal">
+                        @if (Model.refe.ECE.Inconsciente)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="card border-dark mb-3 mr-5" style="width: 16rem;height:23rem;">
+            <div class="card-header h4 text-center" style="font-size:1.4rem;">Cuidador Detalhes:</div>
+            <div class="card-body text-dark">
+                <p class="card-text font-weight-bolder">
+                    Sobrecarga física/emocional: <span class="font-weight-normal">
+                        @if (Model.refe.CuidadorDetalhes.Sobrecarga)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Doença do Cuidador Principal: <span class="font-weight-normal">
+                        @if (Model.refe.CuidadorDetalhes.DCP)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Ausência de Suporte Familiar: <span class="font-weight-normal">
+                        @if (Model.refe.CuidadorDetalhes.ASF)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Cuidador com Idade Avançada: <span class="font-weight-normal">
+                        @if (Model.refe.CuidadorDetalhes.CuidadorIdadeAvancada)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <div class="card border-dark mb-3 mr-5" style="width: 46rem;">
+            <div class="card-header h4 text-center" style="font-size:1.4rem;">Indicadores de Risco Social:</div>
+            <div class="card-body text-dark">
+                <p class="card-text font-weight-bolder">
+                    Isolamento Social/Geográfico: <span class="font-weight-normal">
+                        @if (Model.refe.IRS.Isolamento)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Ausência de Suporte Familiar: <span class="font-weight-normal">
+                        @if (Model.refe.IRS.ASF)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    História de Conflitualidade Familiar/Rutura Familiar: <span class="font-weight-normal">
+                        @if (Model.refe.IRS.Conflitualidade)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Antecedentes Pessoais/Familiares de Violência: <span class="font-weight-normal">
+                        @if (Model.refe.IRS.AntecedentesViolencia)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Suspeita de Maus Tratos: <span class="font-weight-normal">
+                        @if (Model.refe.IRS.MausTratos)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Negligência na Prestação de Cuidados: <span class="font-weight-normal">
+                        @if (Model.refe.IRS.Negligencia)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Dependência do Idoso na sua Gestão Económica/Financeira e de Bens: <span class="font-weight-normal">
+                        @if (Model.refe.IRS.DependenciaEconomica)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Baixos Rendimentos: <span class="font-weight-normal">
+                        @if (Model.refe.IRS.BaixosRendimentos)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Habitação Degradada: <span class="font-weight-normal">
+                        @if (Model.refe.IRS.HabitacaoDegradada)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Condições de Salubridade Precárias: <span class="font-weight-normal">
+                        @if (Model.refe.IRS.SalubridadePrecaria)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Coabitação/Sobrelotação Habitacional: <span class="font-weight-normal">
+                        @if (Model.refe.IRS.CoabitacaoHabitacional)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">
+                    Barreiras Arquitectónicas: <span class="font-weight-normal">
+                        @if (Model.refe.IRS.BarreirasArquitetonicas)
+                        {<i class="fas fa-check" style="padding-left:0.3rem; color:green;"></i>}
+                        else
+                        { <i class="fas fa-times" style="padding-left:0.3rem; color:red;"></i>}
+                    </span>
+                </p>
+                <p class="card-text font-weight-bolder">Outras: <span class="font-weight-normal">@Model.refe.IRS.Outras</span></p>
+            </div>
+        </div>
+    </div>
+
+    <p class="font-weight-bolder">Data: <span class="font-weight-normal">@String.Format("{0}/{1}/{2}", Model.refe.Criacao.Day, Model.refe.Criacao.Month, Model.refe.Criacao.Year)</span></p>
+
+    <hr />
+</div>
+@Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-outline-info" })

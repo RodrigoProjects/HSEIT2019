@@ -1,0 +1,60 @@
+﻿@model  IEnumerable<CuidadosContinuados.Models.Utente>
+
+@{
+    ViewBag.Title = "Create";
+}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<link href="~/Static/Buttons.css" rel="stylesheet" />
+<h2 class="text-center">Criar Nova Referienciacao</h2>
+
+<br />
+@using (Html.BeginForm("Create", "Medicos", FormMethod.Get))
+{
+    <div class="form-row col-md-4">
+
+
+        <div class="col-auto">
+            @Html.TextBox("SearchString", null, new { @class = "search-query form-control form-inline", @placeholder = "Search" })
+
+        </div>
+        <div class="col-auto" style="margin-left:-0.6rem">
+            <button type="submit" value="" class="btn btn-danger"><i class="fas fa-search"></i></button>
+        </div>
+
+
+
+    </div>
+}
+
+<br />
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="card m-2" style="width: 20rem;">
+            <img src="~/Static/logo_utente.jpg" alt="...">
+            <div class="card-body">
+                <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+                <br />
+
+
+                <p><span class="badge badge-secondary"><i class="fas  fa-info-circle"></i></span> @Html.DisplayFor(modelItem => item.HSE)</p>
+                <p><span class="badge badge-secondary"><i class="fas fa-mobile-alt"></i></span> @Html.DisplayFor(modelItem => item.NumeroTelefone)</p>
+                <br />
+                <form method="post">
+                    <input name="Id" asp-for="Id" type="hidden" value="@item.Id"  />
+                    <button class="btn btn-outline-info" type="submit">Selecionar</button>
+                </form>
+
+
+
+
+            </div>
+        </div>
+
+
+
+    }
+</div>
+

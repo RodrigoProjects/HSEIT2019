@@ -1,0 +1,184 @@
+﻿@model CuidadosContinuados.Models.DeleteModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Referenciacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.utentes.Where(c => c.Id == model.refe.UtenteId).SingleOrDefault().Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.utentes.Where(c => c.Id == model.refe.UtenteId).SingleOrDefault().Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.utentes.Where(c => c.Id == model.refe.UtenteId).SingleOrDefault().Morada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.utentes.Where(c => c.Id == model.refe.UtenteId).SingleOrDefault().Morada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.utentes.Where(c => c.Id == model.refe.UtenteId).SingleOrDefault().NumeroTelefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.utentes.Where(c => c.Id == model.refe.UtenteId).SingleOrDefault().NumeroTelefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiagnosticoClinico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiagnosticoClinico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataDeAlta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataDeAlta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CriteriosDeTriagem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CriteriosDeTriagem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DependenciaAVD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DependenciaAVD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desnutricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desnutricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deteorioracao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deteorioracao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProblemasSensoriais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemasSensoriais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DCronicas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DCronicas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NCCD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NCCD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NTC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NTC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AND)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AND)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ECE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ECE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CuidadorDetalhes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CuidadorDetalhes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IRS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IRS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Criacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Criacao)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

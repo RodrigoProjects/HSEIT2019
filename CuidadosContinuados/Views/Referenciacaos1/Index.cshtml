@@ -1,0 +1,171 @@
+﻿@model IEnumerable<CuidadosContinuados.Models.Referenciacao>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UtenteId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cuidador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EntidadeReferenciadora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiagnosticoClinico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataDeAlta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CriteriosDeTriagem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DependenciaAVD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desnutricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deteorioracao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProblemasSensoriais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DCronicas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NCCD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NTC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AND)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ECE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CuidadorDetalhes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IRS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Criacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Enfermeiro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MedicoOk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnfermeiroOk)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssistOk)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UtenteId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cuidador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntidadeReferenciadora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiagnosticoClinico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataDeAlta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CriteriosDeTriagem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DependenciaAVD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desnutricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deteorioracao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProblemasSensoriais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DCronicas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NCCD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NTC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AND)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ECE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CuidadorDetalhes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IRS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Criacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Enfermeiro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MedicoOk)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnfermeiroOk)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssistOk)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

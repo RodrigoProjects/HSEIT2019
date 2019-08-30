@@ -1,0 +1,61 @@
+﻿@model  IEnumerable<CuidadosContinuados.Models.Medicos>
+
+@{
+    ViewBag.Title = "CreateEnf";
+}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<link href="~/Static/Buttons.css" rel="stylesheet" />
+<h2 class="text-center">Médico</h2>
+
+<br />
+@using (Html.BeginForm("CreateEnf", "Enfermeiros", FormMethod.Get))
+{
+    <div class="form-row col-md-4">
+
+
+        <div class="col-auto">
+            <input type="hidden" value="@ViewBag.Message" name="Id" asp-for="Id" />
+            @Html.TextBox("SearchString", null, new { @class = "search-query form-control form-inline", @placeholder = "Search" })
+
+        </div>
+        <div class="col-auto" style="margin-left:-0.6rem">
+            <button type="submit" value="" class="btn btn-danger"><i class="fas fa-search"></i></button>
+        </div>
+
+
+
+    </div>
+}
+
+<br />
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="card m-2">
+            <div class="thumbnail">
+                <img src="~/Static/enfermeiro.png" alt="...">
+                <div class="card-body">
+                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                    <br />
+                    <form method="post">
+                        <input name="Id" asp-for="Id" type="hidden" value="@ViewBag.Message" />
+                        <input name="EnfId" asp-for="EnfId" type="hidden" value="@item.Id" />
+                        <button class="btn btn-outline-info" type="submit">Selecionar</button>
+                    </form>
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    }
+</div>
+
+
